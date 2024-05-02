@@ -13,3 +13,5 @@ export function createLogger(loggerName) {
     transports: [new winston.transports.Console()]
   })
 }
+
+export const logger = createLogger()

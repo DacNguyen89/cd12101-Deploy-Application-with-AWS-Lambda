@@ -5,6 +5,8 @@ import httpErrorHandler from '@middy/http-error-handler'
 import { updateTodo } from '../../businessLogic/todos.mjs'
 import { getUserId } from '../../auth/utils.mjs'
 
+import { logger } from '../../utils/logger.mjs'
+
 export const handler = middy()
   .use(httpErrorHandler())
   .use(
@@ -13,7 +15,7 @@ export const handler = middy()
     })
   )
   .handler(async (event) => {
-    console.log('Processing event: ', event)
+    logger.info('Processing event: ', event)
 
     const todoId = event.pathParameters.todoId
     const authorization = event.headers.Authorization
